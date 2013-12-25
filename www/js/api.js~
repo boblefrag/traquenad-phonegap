@@ -1,0 +1,5 @@
+var api = {
+    check_login: function(evt, obj){
+        console.log(evt, obj)
+    }
+}

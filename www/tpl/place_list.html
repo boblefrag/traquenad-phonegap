@@ -1,0 +1,20 @@
+<div class="topcoat-list">
+<ul class="topcoat-list__container">
+{{#places}}
+<li class="topcoat-list__item place" id="{{slug}}">
+<h4>
+  {{name}}
+  <i class="glyphicon glyphicon-thumbs-up"></i>
+{{likes}}
+  <i class="glyphicon glyphicon-thumbs-down"></i>
+{{dislikes}}
+
+</h4>
+<p>{{place_type.name}}</p>
+<p>{{address}}</p>
+<p>{{description}}</p>
+</li>
+
+{{/places}}
+</ul>
+</div>
