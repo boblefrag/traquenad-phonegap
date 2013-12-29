@@ -1,0 +1,8 @@
+({
+    baseUrl: ".",
+    paths: {
+        tpl: "tpl"
+    },
+    name: "index",
+    out: "main-built.js"
+})

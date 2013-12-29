@@ -1,0 +1,32 @@
+<button type="button" class="btn btn-default" id="retour">Retour</button>
+
+<div>
+  <h4>{{place.name}}
+    <i class="glyphicon glyphicon-thumbs-up"></i>
+    {{place.likes}}
+    <i class="glyphicon glyphicon-thumbs-down"></i>
+    {{place.dislikes}}
+  </h4>
+  <p>{{place.place_type.name}}</p>
+  <p>{{place.address}}</p>
+  <p>{{place.description}}</p>
+
+  <div class="topcoat-list">
+    <ul class="topcoat-list__container">
+      {{#place.near}}
+      <li class="topcoat-list__item place" id="{{address}}">
+        <h4>
+          {{name}}
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+          {{likes}}
+          <i class="glyphicon glyphicon-thumbs-down"></i>
+          {{dislikes}}
+
+        </h4>
+        <p>{{place_type.name}}</p>
+        <p>{{address}} {{#toFixed}}{{geoadress.distance}}{{/toFixed}} mètres</p>
+        <p>{{description}}</p>
+      </li>
+      {{/place.near}}
+    </ul>
+  </div>

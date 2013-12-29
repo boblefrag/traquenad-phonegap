@@ -69,12 +69,12 @@ var app = {
                 var template = html;
                 output = Mustache.render(html, data);
                 document.getElementById("geolocation").innerHTML = output;
-            })
+            });
 
             navigator.geolocation.getCurrentPosition(
                 datamapper.setgeo,
                 datamapper.ongeoError,
-                { maximumAge: 3000, timeout: 50000, enableHighAccuracy: true }
+                { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }
             );
 
         }

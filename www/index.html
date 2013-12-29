@@ -36,77 +36,22 @@
 
     <link rel="stylesheet" type="text/css"
         href="css/bootstrap.min.css">
-
-
     <link rel="stylesheet" type="text/css"
-        href="css/topcoat-mobile-light.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-
-
-
+        href="css/main.css">
   </head>
 <body class="light">
-  <div class="current-page">
-    <div class="topcoat-navigation-bar">
-      <div class="topcoat-navigation-bar__item left quarter">
-        <a id="slide-menu-button" class="topcoat-icon-button--quiet slide-menu-button">
-          <span class="topcoat-icon--large topcoat-icon--menu-stack"></span>
-        </a>
-      </div>
-      <div class="topcoat-navigation-bar__item center half">
-        <h1 class="topcoat-navigation-bar__title">Traquenard</h1>
-      </div>
-      <div class="topcoat-navigation-bar__item right quarter">
-        <a class="topcoat-icon-button--quiet">
-          <span class="topcoat-icon topcoat-icon--edit"></span>
-        </a>
-      </div>
+  <div class="main-content">
+    <div id="geolocation">
     </div>
-    <nav class="side-nav">
-      <div class="topcoat-list__container side-nav__list__container">
-        <ul class="topcoat-list side-nav__list">
-          <li class="topcoat-list__item side-nav__list__item">
-            <a href="#" class="side-nav__button">Item</a>
-          </li>
-          <li class="topcoat-list__item side-nav__list__item is-active">
-            <a href="#" class="side-nav__button">Item</a>
-          </li>
-          <li class="topcoat-list__item side-nav__list__item">
-            <a href="#" class="side-nav__button">Item</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="main-content">
-      <div id="wrapper">
-      </div>
+    <div id="wrapper">
     </div>
   </div>
-  <script>
-    window.onload = function () {
-
-        var slideMenuButton = document.getElementById('slide-menu-button');
-        slideMenuButton.onclick = function (e) {
-            var cl = document.body.classList;
-            if (cl.contains('left-nav')) {
-                cl.remove('left-nav');
-            } else {
-                cl.add('left-nav');
-            }
-        };
-
-    }
-  </script>
-
-
+</div>
 
   <script type="text/javascript" src="phonegap.js"></script>
-  <script type="text/javascript" src="js/datamapper.js"></script>
-  <script type="text/javascript" src="js/datastore.js"></script>
-  <script type="text/javascript" src="js/api.js"></script>
-  <script type="text/javascript" src="js/mustache.js"></script>
   <script type="text/javascript" src="js/require.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/main-built.js"></script>
+  <!-- <script type="text/javascript" src="js/index.js"></script> -->
   <script type="text/javascript">
     app.initialize();
   </script>

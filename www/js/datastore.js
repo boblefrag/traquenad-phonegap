@@ -21,7 +21,7 @@ var db = function(){
                 console.log(err);
             },
             function(tx){
-                console.log("ok")
+                database.get_token()
             })
     };
     this.set_token = function(token){

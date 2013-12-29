@@ -1,0 +1,9 @@
+<form role="geo_change" id="geochange-form">
+  <input type="text" name="address"
+         placeholder="Enter your address"
+         class="form-control"
+         required />
+  <button type="submit" class="btn btn-lg btn-primary btn-block">
+    Valider
+  </button>
+</form>
