@@ -1,20 +1,29 @@
-<div class="topcoat-list">
-<ul class="topcoat-list__container">
-{{#places}}
-<li class="topcoat-list__item place" id="{{place.address}}">
-<h4>
-  {{place.name}} {{distance}} 
-  <i class="glyphicon glyphicon-thumbs-up"></i>
-{{place.likes}}
-  <i class="glyphicon glyphicon-thumbs-down"></i>
-{{place.dislikes}}
+<button type="button" class="btn btn-default" id="retour">Retour</button>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Résultats</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list">
+      <ul class="list-group">
+        {{#places}}
+        <li class="list-group-item place" id="{{place.address}}">
+          <h4>
+            {{place.name}}
+          </h4>
+          <p> <i class="fa fa-{{place.place_type.icon}}"></i> {{place.place_type.name}}</p>
+            <p>{{#toFixed}}{{distance}}{{/toFixed}} mètres
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+            {{place.likes}}
+            <i class="glyphicon glyphicon-thumbs-down"></i>
+            {{place.dislikes}}
+            </p>
+          <p>{{place.address}}</p>
+          <p>{{place.description}}</p>
+        </li>
 
-</h4>
-<p>{{place.place_type.name}}</p>
-<p>{{place.address}}</p>
-<p>{{place.description}}</p>
-</li>
-
-{{/places}}
-</ul>
+        {{/places}}
+      </ul>
+    </div>
+  </div>
 </div>

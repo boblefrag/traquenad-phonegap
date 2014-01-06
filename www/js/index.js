@@ -64,6 +64,22 @@ var app = {
             });
         }else{
             api.getPlaceType()
+            document.getElementById("search").addEventListener(
+                "click",
+                datamapper.get_placetypes_templates,
+                false
+            );
+            document.getElementById("user").addEventListener(
+                "click",
+                datamapper.get_user_infos,
+                false
+            );
+            document.getElementById("create").addEventListener(
+                "click",
+                datamapper.create_place,
+                false
+            );
+            
             require(["text!geolocation.html", "mustache"], function(html, Mustache){
                 var data = {"position": "chargement"};
                 var template = html;

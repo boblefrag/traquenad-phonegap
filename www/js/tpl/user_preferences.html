@@ -1,0 +1,29 @@
+<h2>{{username}}</h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Vos traquenards</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list">
+      <ul class="list-group">
+        {{#places_created}}
+        <li class="list-group-item place" id="{{address}}">
+          <h4>
+            {{name}}
+          </h4>
+          <p> <i class="fa fa-{{place_type.icon}}"></i> {{place_type.name}}</p>
+          <p>
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+            {{likes}}
+            <i class="glyphicon glyphicon-thumbs-down"></i>
+            {{dislikes}}
+          </p>
+          <p>{{address}}</p>
+          <p>{{description}}</p>
+
+        </li>
+        {{/places_created}}
+      </ul>
+    </div>
+  </div>
+</div>

@@ -19,8 +19,6 @@
 -->
 
   <head>
-
-    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Traquenard</title>
@@ -38,19 +36,42 @@
         href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
         href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen" />
   </head>
 <body class="light">
-  <div class="main-content">
+  <div class="main-content container">
+
+
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <b class="navbar-brand" >Traquenard</b>
+    <i class="fa fa-search pull-right navbar-brand" id="search"></i>
+    <i class="fa fa-user pull-right navbar-brand" id="user"></i>
+    <i class="fa fa-plus pull-right navbar-brand" id="create"></i>
+  </div>
+
+</nav>
+
+
+
+
+
+
     <div id="geolocation">
     </div>
+
     <div id="wrapper">
     </div>
+
   </div>
-</div>
 
   <script type="text/javascript" src="phonegap.js"></script>
   <script type="text/javascript" src="js/require.js"></script>
   <script type="text/javascript" src="js/main-built.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <!-- <script type="text/javascript" src="js/index.js"></script> -->
   <script type="text/javascript">
     app.initialize();

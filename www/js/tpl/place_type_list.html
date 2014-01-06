@@ -1,10 +1,33 @@
-<div class="topcoat-list">
-  <ul class="topcoat-list__container">
-    {{#placetypes}}
-    <li class="topcoat-list__item placetype" id="{{name}}">
-      <i class="{{icon}}"></i> {{name}}
-    </li>
-    {{/placetypes}}
-  </ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <form class="form-inline" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control"
+                 placeholder="Search">
+        </div>
+      </form>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="list">
+      <ul class="list-group">
 
+        <li class="list-group-item placetype" id="all">
+          <i class="tout"></i> tout
+        </li>
+
+        {{#placetypes}}
+        <li class="list-group-item placetype" id="{{name}}">
+          <i class="fa fa-{{icon}}"></i> {{name}}
+        </li>
+        {{/placetypes}}
+      </ul>
+
+    </div>
+
+  </div>
 </div>
+
+
+

@@ -1,9 +1,19 @@
-<form role="geo_choice" id="geochoice-form">
-{{#choices}}
-<label>
-<input type="radio" name="choice" value="{{display_name}}" />
-{{display_name}}
-</label>
-{{/choices}}
-<button type="submit" class="btn btn-lg btn-primary btn-block">
-</form>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Position</h3>
+  </div>
+  <div class="panel-body">
+    <form role="geo_choice" id="geochoice-form">
+      <ul class="list-group">
+
+        {{#choices}}
+        <li class="list-group-item choices" id="{{display_name}}">
+          {{display_name}}
+        </li>
+
+        {{/choices}}
+      </ul>
+    </form>
+
+  </div>
+</div>

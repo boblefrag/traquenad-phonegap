@@ -55,6 +55,32 @@ var api = {
         };
         xhr.send()
     },
+    getPlaceList: function(){
+        if(datamapper.lat == null || datamapper.lon == null){
+            alert("indiquez votre position")
+            return;
+        };
+
+        var xhr = new XMLHttpRequest();
+        var qs = "lat="+encodeURIComponent(datamapper.lat)+"&lon="+encodeURIComponent(datamapper.lon)
+        if(this.id != "all"){
+            qs += "&placetype=" + encodeURIComponent(this.id)
+        }
+        console.log(qs)
+        xhr.open('GET', api.url +"/api/geoadress/?" + qs , true);
+        xhr.setRequestHeader("Authorization", "Token " +database.token);
+        console.log("Authorization", "Token " +database.token)
+        xhr.onload = function () {
+
+            if(this.status == 200){
+                data = {"places": JSON.parse(this.responseText)};
+                datamapper.initialize(data);
+                datamapper.get_places_templates();
+            }
+        };
+
+        xhr.send()
+    },
     getNominatim: function(lat, lon, html, Mustache){
         var xhr = new XMLHttpRequest();
         xhr.open('GET',
@@ -75,11 +101,20 @@ var api = {
         var xhr = new XMLHttpRequest();
         xhr.open(
             'GET',
-            "http://nominatim.openstreetmap.org/?format=json&countrycodes=fr&q="+encodeURIComponent(address),
+            "http://nominatim.openstreetmap.org/?zoom=18&format=json&countrycodes=fr&q="+encodeURIComponent(address),
             true);
         xhr.onload = function(){
             datamapper.geo_choices(JSON.parse(this.responseText))
         }
         xhr.send()
     },
+    getUserInfos: function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', api.url +"/api/user/me/" , true);
+        xhr.setRequestHeader("Authorization", "Token " +database.token);
+        xhr.onload = function () {
+            datamapper.get_user_template(JSON.parse(this.responseText))
+        };
+        xhr.send();
+    }
 }

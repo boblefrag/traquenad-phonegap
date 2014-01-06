@@ -15,27 +15,43 @@ var datamapper = {
     get_placetypes: function(){
         return this.placetypes
     },
-
     get_placetypes_templates:function(){
+
         require(["text!place_type_list.html", "mustache"], function(html, Mustache){
             var template = html;
-            var data = {"placetypes": datamapper.placetypes.placetypes};
-            console.log(data);
+            var data = {"placetypes": datamapper.placetypes.placetypes
+                       };
             output = Mustache.render(html, data);
             document.getElementById('wrapper').innerHTML=output;
+            var placetypes = document.getElementsByClassName("placetype");
+            for(var i=0;i< placetypes.length; i++){
+                placetypes[i].addEventListener("click", api.getPlaceList, false)
+            }
         })
     },
 
     get_places_templates: function(){
         require(["text!place_list.html", "mustache"], function(html, Mustache){
             var template = html;
-            var data = {"places": datamapper.places.places};
+            var data = {"places": datamapper.places.places,
+                        toFixed: function() {
+                            return function(num, render) {
+                                return parseFloat(render(num)).toFixed(0)}
+                        }
+                       };
             output = Mustache.render(html, data);
             document.getElementById('wrapper').innerHTML=output;
+            document.getElementById("change").style.display = "none"
             places = document.querySelectorAll(".place");
             for(var i=0; i<places.length;i++){
                 places[i].addEventListener("click", datamapper.get_details, false)
-            }
+            };
+            document.getElementById("retour")
+                .addEventListener("click",
+                                  function(){
+                                      document.getElementById("change").style.display = "block"
+                                      datamapper.get_placetypes_templates();
+                                  }, false)
         });
     },
 
@@ -81,30 +97,27 @@ var datamapper = {
             var data = {"choices": choices};
             output = Mustache.render(html, data);
             document.getElementById("geolocation").innerHTML = output;
-            document.getElementById("geochoice-form")
-                .addEventListener("click", function(){
-                    var choices = this.elements.choice;
-                    for(var i=0;i<data.choices.length;i++){
-                        for(var j=0; j<choices.length;j++){
-                            if(choices[j].checked){
-                                var chosen = choices[j];
+            choices = document.querySelectorAll(".choices");
+            for(var i=0; i<choices.length; i++){
+                choices[i].addEventListener(
+                    "click",
+                    function(){
+                        for(var j=0;j<data.choices.length;j++){
+                            if(this.id == data.choices[j].display_name){
+                                datamapper.lat = data.choices[j].lat;
+                                datamapper.lon = data.choices[j].lon;
+                                require(["text!geolocation.html", "mustache"], function(html, Mustache){
+                                    api.getNominatim(datamapper.lat, datamapper.lon, html, Mustache);
+                                });
                                 break;
-                            };
-                        };
-                    };
-                    for(var i=0; i< data.choices.length;i++){
-                        if(data.choices[i].display_name == chosen.value){
-                            datamapper.lat = data.choices[i].lat;
-                            datamapper.lon = data.choices[i].lon;
-                            require(["text!geolocation.html", "mustache"], function(html, Mustache){
-                                api.getNominatim(datamapper.lat, datamapper.lon, html, Mustache);
-                            });
-                            break;
+                            }
                         }
-                    }
-                }, false)
+                    },
+                    false)
+            }
         });
     },
+
     get_details: function(evt){
         for (var i=0; i<datamapper.places.places.length; i++){
             if(datamapper.places.places[i].place.address == this.id){
@@ -114,6 +127,7 @@ var datamapper = {
                                     return parseFloat(render(num)).toFixed(0)}
                             }
                            }
+                console.log(data)
                 require(["text!place_details.html", "mustache"],
                         function(html, Mustache){
                             var template = html;
@@ -130,5 +144,18 @@ var datamapper = {
                 })
             }
         }
-    }
+    },
+    get_user_infos: function(){
+        api.getUserInfos()
+    },
+    get_user_template: function(data){
+        console.log(data)
+        require(["text!user_preferences.html", "mustache"], function(html, Mustache){
+            output = Mustache.render(html, data);
+            document.getElementById('wrapper').innerHTML=output;
+        })
+    },
+    create_place: function(){
+        console.log("Create Place")
+    },
 };
